@@ -1,14 +1,13 @@
 package com.api.CyberStore_API.entities;
-import jakarta.persistence.*;
 
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity // @Entity: Transforma esta classe em uma tabela no seu banco de dados
-@Table(name = "tb_user") // @Table: Define o nome real da tabela no banco (evita erros com nomes reservados)
+@Entity
+@Table(name = "tb_user")
 public class User implements Serializable {
 
-    // Número de série para garantir a integridade dos dados durante a transferência/armazenamento
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -17,20 +16,22 @@ public class User implements Serializable {
     private String name;
     private String email;
     private String password;
+    private String phone;
 
-    // Construtor vazio: O Hibernate/JPA exige isso para instanciar a classe internamente
+    // Construtor vazio obrigatório para o Hibernate
     public User() {
     }
 
-    // Construtor com argumentos: Facilita a criação do objeto
-    public User(Long id, String name, String email, String password) {
+    // Construtor com argumentos atualizado para incluir o PHONE
+    public User(Long id, String name, String email, String password, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.phone = phone;
     }
 
-    // Getters e Setters: Métodos de acesso para garantir o encapsulamento (segurança do dado)
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -63,9 +64,18 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    // 4. hashCode e equals (baseado apenas no ID para comparação de objetos)
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    // hashCode e equals (baseado apenas no ID)
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(id, user.id);
@@ -73,6 +83,6 @@ public class User implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(id);
     }
 }
