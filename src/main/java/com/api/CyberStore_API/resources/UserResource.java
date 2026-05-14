@@ -2,7 +2,6 @@ package com.api.CyberStore_API.resources;
 
 import com.api.CyberStore_API.entities.User;
 import com.api.CyberStore_API.services.UserService;
-import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +23,6 @@ public class UserResource {
     findAll(){
         List<User> list = service.findAll();
         return ResponseEntity.ok().body(list);
-
     }
 
     @GetMapping(value = "/{id}")

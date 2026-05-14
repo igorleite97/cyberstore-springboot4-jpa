@@ -1,8 +1,8 @@
 package com.api.CyberStore_API.entities;
 
 import com.api.CyberStore_API.entities.enums.OrderStatus;
-import com.api.CyberStore_API.repositories.OrderRepository;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -25,12 +25,11 @@ public class Order implements Serializable {
     @JsonFormat(
             shape = JsonFormat.Shape.STRING,
             pattern = "yyyy-MM-dd'T'HH:mm:ssX",
-            timezone = "GMT"
-    )
+            timezone = "GMT")
     private Instant moment;
 
     private Integer orderStatus;
-
+ 
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
