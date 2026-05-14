@@ -58,13 +58,11 @@ public class OrderItem implements Serializable {
         this.price = price;
     }
 
-    public Integer getQuantity() {
-        return quantity;
-    }
+    public Double getSubTotal() { return price * quantity; }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+    public Integer getQuantity() {return quantity; }
+
+    public void setQuantity(Integer quantity) { this.quantity = quantity; }
 
     @Override
     public boolean equals(Object o) {
