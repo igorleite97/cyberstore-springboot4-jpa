@@ -1,23 +1,27 @@
 package com.api.CyberStore_API.dto;
 
-import java.io.Serial;
 
-public class UserInsertDTO extends UserDTO {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-    @Serial
-    private static final long serialVersionUID = 1L;
+// Entrada de criação
+public record UserInsertDTO(
 
-    private String password;
+        @NotBlank(message = "Name is required")
+        @Size(min = 3, max = 80)
+        String name,
 
-    public UserInsertDTO() {
-        super();
-    }
+        @NotBlank(message = "Email is required")
+        @Email(message = "Invalid email")
+        String email,
 
-    public String getPassword() {
-        return password;
-    }
+        @NotBlank(message = "Phone is required")
+        String phone,
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-}
+        @NotBlank(message = "Password is required")
+        @Size(min = 6, message = "Password must have at least 6 characters")
+        String password
+
+
+) {}
