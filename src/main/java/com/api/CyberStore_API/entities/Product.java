@@ -1,6 +1,7 @@
 package com.api.CyberStore_API.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -22,6 +23,8 @@ public class Product implements Serializable {
     private String name;
     private String description;
     private Double price;
+
+    @JsonProperty("img_url")
     private String imgUrl;
 
     @ManyToMany

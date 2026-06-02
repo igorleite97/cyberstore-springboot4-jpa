@@ -2,6 +2,7 @@ package com.api.CyberStore_API.entities;
 
 import com.api.CyberStore_API.entities.pk.OrderItemPK;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -41,7 +42,8 @@ public class OrderItem implements Serializable {
     public void setOrder(Order order) {
         id.setOrder(order); 
     }
-    
+
+    @JsonIgnoreProperties({"orders"})
     public Product getProduct() {
         return id.getProduct();
     }

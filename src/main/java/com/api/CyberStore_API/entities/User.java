@@ -29,12 +29,12 @@ public class User implements Serializable {
 
     public User() {}
 
-    public User(Long id, String name, String email, String password, String phone) {
+    public User(Long id, String name, String email, String phone, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.password = password;
         this.phone = phone;
+        this.password = password;
     }
 
     public Long getId() {
@@ -49,12 +49,16 @@ public class User implements Serializable {
         return email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
     public String getPassword() {
         return password;
     }
 
-    public String getPhone() {
-        return phone;
+    public List<Order> getOrders() {
+        return orders;
     }
 
     public void setId(Long id) {
@@ -69,12 +73,12 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
